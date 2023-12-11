@@ -5,14 +5,16 @@ namespace Krzysztofzylka\Console;
 /**
  * Arguments reader
  */
-class Args {
+class Args
+{
 
     /**
      * Get args in readable array
      * @param array $argv
      * @return array
      */
-    public static function getArgs(array $argv) : array {
+    public static function getArgs(array $argv): array
+    {
         $return = [
             'path' => $argv[0],
             'args' => [],

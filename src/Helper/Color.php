@@ -2,14 +2,16 @@
 
 namespace Krzysztofzylka\Console\Helper;
 
-class Color {
+class Color
+{
 
     /**
      * generate color
      * @param int|string|null $color
      * @return string
      */
-    public static function generateColor(null|int|string $color = null) : string {
+    public static function generateColor(null|int|string $color = null): string
+    {
         $color = self::getColorNumber($color);
 
         return "\033[{$color}m";
@@ -20,7 +22,8 @@ class Color {
      * @param int|string|null $color
      * @return int|string
      */
-    public static function getColorNumber(null|int|string $color = null) : int|string {
+    public static function getColorNumber(null|int|string $color = null): int|string
+    {
         if (is_int($color)) {
             return $color;
         } elseif (is_null($color)) {

@@ -1,11 +1,12 @@
 <?php
 
-namespace krzysztofzylka\Console\Generator;
+namespace Krzysztofzylka\Console\Generator;
 
 /**
  * Table generator
  */
-class Table {
+class Table
+{
 
     private array $data = [];
 
@@ -21,7 +22,8 @@ class Table {
      * @param string $data
      * @return void
      */
-    public function addColumn(string $name, string $data) : void {
+    public function addColumn(string $name, string $data): void
+    {
         $this->columns[] = [
             'name' => $name,
             'data' => $data,
@@ -36,7 +38,8 @@ class Table {
      * @param array $data
      * @return void
      */
-    public function setData(array $data) : void {
+    public function setData(array $data): void
+    {
         $this->data = $data;
 
         $this->calculateSpace();
@@ -46,7 +49,8 @@ class Table {
      * Render table
      * @return void
      */
-    public function render() : void {
+    public function render(): void
+    {
         if (empty($this->columns) || empty($this->data)) {
             print('Empty table');
 
@@ -73,7 +77,8 @@ class Table {
      * Render header
      * @return void
      */
-    private function renderHeader() : void {
+    private function renderHeader(): void
+    {
         $data = [];
         $data2 = [];
         $data3 = [];
@@ -93,7 +98,8 @@ class Table {
      * Render data
      * @return void
      */
-    private function renderData() : void {
+    private function renderData(): void
+    {
         foreach ($this->data as $data) {
             $addData = [];
 
@@ -110,7 +116,8 @@ class Table {
      * Calculate space
      * @return void
      */
-    private function calculateSpace() : void {
+    private function calculateSpace(): void
+    {
         foreach ($this->columns as $key => $column) {
             $this->columns[$key]['space'] = strlen($column['name']);
 

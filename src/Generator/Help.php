@@ -1,14 +1,15 @@
 <?php
 
-namespace krzysztofzylka\Console\Generator;
+namespace Krzysztofzylka\Console\Generator;
 
-use krzysztofzylka\Console\Helper\Color;
-use krzysztofzylka\Console\Prints;
+use Krzysztofzylka\Console\Helper\Color;
+use Krzysztofzylka\Console\Prints;
 
 /**
  * Help generator
  */
-class Help {
+class Help
+{
 
     private array $helpers = [];
 
@@ -18,16 +19,19 @@ class Help {
      * @param string $message
      * @return void
      */
-    public function addHelp(string $command, string $message) : void {
+    public function addHelp(string $command, string $message): void
+    {
         $this->helpers[] = [$command, $message, 'type' => 'help'];
     }
 
     /**
      * Add console header
-     * @param string $header
+     * @param string $title
+     * @param int|string|null $color
      * @return void
      */
-    public function addHeader(string $title, int|string $color = null) : void {
+    public function addHeader(string $title, int|string $color = null): void
+    {
         $this->helpers[] = ['', $title, 'type' => 'header', 'color' => $color];
     }
 
@@ -35,7 +39,8 @@ class Help {
      * Render helper
      * @return void
      */
-    public function render() : void {
+    public function render(): void
+    {
         foreach ($this->helpers as $data) {
             switch ($data['type']) {
                 case 'header':
@@ -55,7 +60,8 @@ class Help {
      * @param string|null $text
      * @return int
      */
-    private function getSpaces(?string $text = null) : int {
+    private function getSpaces(?string $text = null): int
+    {
         $spaces = max(array_map('strlen', array_column($this->helpers, 0)));
 
         if (!$text) {

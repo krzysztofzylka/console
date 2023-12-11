@@ -2,7 +2,7 @@
 
 namespace Krzysztofzylka\Console;
 
-use krzysztofzylka\Console\Helper\Color;
+use Krzysztofzylka\Console\Helper\Color;
 
 class Prints
 {
@@ -15,7 +15,8 @@ class Prints
      * @param string|int|null $color line color
      * @return void
      */
-    public static function print(string $value, bool $timestamp = false, bool $exit = false, string|int $color = null) : void {
+    public static function print(string $value, bool $timestamp = false, bool $exit = false, string|int $color = null): void
+    {
         if (!is_null($color)) {
             echo Color::generateColor($color);
         }
@@ -40,7 +41,8 @@ class Prints
      * @param string $value
      * @return void
      */
-    public static function sprint(string $value) : void {
+    public static function sprint(string $value): void
+    {
         echo $value;
     }
 
