@@ -52,7 +52,7 @@ class Table
     public function render(): void
     {
         if (empty($this->columns) || empty($this->data)) {
-            print('Empty table');
+            print("Empty table\n");
 
             return;
         }

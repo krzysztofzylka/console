@@ -22,7 +22,7 @@ class Prints
         }
 
         if ($timestamp) {
-            echo '[' . date('Y-m-d H:i:S') . '] ';
+            echo '[' . date('Y-m-d H:i:s') . '] ';
         }
 
         echo $value . PHP_EOL;
