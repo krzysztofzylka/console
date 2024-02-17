@@ -71,7 +71,7 @@ class Color
                 $color = 104;
                 break;
             default:
-                $color = 37;
+                $color = 0;
                 break;
         }
 
