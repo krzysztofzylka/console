@@ -8,7 +8,6 @@ class Form
     /**
      * Console input
      * @param string|null $label
-     * @param string|null $labelColor
      * @return string
      */
     public static function input(?string $label = null): string
@@ -21,7 +20,6 @@ class Form
     /**
      * Prompt
      * @param string $label
-     * @param string|null $labelColor
      * @param string $append
      * @param bool $exit
      * @return bool
