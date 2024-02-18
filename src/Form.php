@@ -11,14 +11,9 @@ class Form
      * @param string|null $labelColor
      * @return string
      */
-    public static function input(?string $label = null, ?string $labelColor = 'blue'): string
+    public static function input(?string $label = null): string
     {
-        if (!is_null($label)) {
-            Prints::print($label, color: $labelColor);
-        }
-
-        Prints::sprint('> ');
-        $input = (string)fgets(STDIN);
+        $input = readline($label !== null ? ($label . ' ') : '');
 
         return trim($input);
     }
@@ -31,11 +26,10 @@ class Form
      * @param bool $exit
      * @return bool
      */
-    public static function prompt(string $label, ?string $labelColor = 'blue', string $append = ' [y/n]', bool $exit = true): bool
+    public static function prompt(string $label, string $append = ' [y/n]', bool $exit = true): bool
     {
-        Prints::print($label . $append, color: $labelColor);
-        $confirm = strtolower(trim(fgets(STDIN)));
-        $confirmContinue = in_array($confirm, ['y', 't']);
+        $confirm = self::input($label . $append);
+        $confirmContinue = in_array(strtolower($confirm), ['y', 't']);
 
         if ($exit && !$confirmContinue) {
             exit;
