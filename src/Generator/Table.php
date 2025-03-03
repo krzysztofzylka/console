@@ -29,8 +29,6 @@ class Table
             'data' => $data,
             'space' => strlen($name)
         ];
-
-        $this->calculateSpace();
     }
 
     /**
@@ -41,8 +39,6 @@ class Table
     public function setData(array $data): void
     {
         $this->data = $data;
-
-        $this->calculateSpace();
     }
 
     /**
@@ -57,6 +53,7 @@ class Table
             return;
         }
 
+        $this->calculateSpace();
         $this->renderHeader();
         $this->renderData();
         $this->renderData[] = $this->renderData[0];
@@ -85,7 +82,7 @@ class Table
 
         foreach ($this->columns as $column) {
             $data[] = str_repeat($this->style[1], $column['space'] + 2);
-            $data2[] = ' ' . $column['name'] . str_repeat(' ', $column['space'] - strlen($column['name']) + 1);
+            $data2[] = ' ' . $column['name'] . str_repeat(' ', max($column['space'] - strlen($column['name']), 0) + 1);
             $data3[] = str_repeat($this->style[1], $column['space'] + 2);
         }
 
@@ -120,13 +117,10 @@ class Table
     {
         foreach ($this->columns as $key => $column) {
             $this->columns[$key]['space'] = strlen($column['name']);
+            $dataSize = array_map('strlen', array_column($this->data, $column['data']));
 
-            if (isset($this->data[0][$column['data']])) {
-                $spaces = max(array_map('strlen', array_column($this->data, $column['data'])));
-
-                if ($spaces > $this->columns[$key]['space']) {
-                    $this->columns[$key]['space'] = $spaces;
-                }
+            if ($dataSize && end($dataSize) > $this->columns[$key]['space']) {
+                $this->columns[$key]['space'] = end($dataSize);
             }
         }
     }
