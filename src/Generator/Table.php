@@ -116,7 +116,8 @@ class Table
     private function calculateSpace(): void
     {
         foreach ($this->columns as $key => $column) {
-            $dataSize = array_map('strlen', array_column($this->data, $column['data']));
+            $result = array_map(fn($value) => $value === null ? '' : $value, array_column($this->data, $column['data']));
+            $dataSize = array_map('strlen', $result);
             $this->columns[$key]['space'] = max(strlen($column['name']), ...$dataSize);
         }
     }
