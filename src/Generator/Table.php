@@ -118,7 +118,7 @@ class Table
         foreach ($this->columns as $key => $column) {
             $result = array_map(fn($value) => $value === null ? '' : $value, array_column($this->data, $column['data']));
             $dataSize = array_map('strlen', $result);
-            $this->columns[$key]['space'] = max(strlen($column['name']), ...$dataSize);
+            $this->columns[$key]['space'] = max(0, strlen($column['name']), ...$dataSize);
         }
     }
 
