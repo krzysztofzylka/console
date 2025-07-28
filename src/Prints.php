@@ -15,7 +15,7 @@ class Prints
      * @param string|int|null $color line color
      * @return void
      */
-    public static function print(string $value, bool $timestamp = false, bool $exit = false, string|int $color = null): void
+    public static function print(string $value, bool $timestamp = false, bool $exit = false, null|string|int $color = null): void
     {
         if (!is_null($color)) {
             echo Color::generateColor($color);
