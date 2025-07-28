@@ -30,7 +30,7 @@ class Help
      * @param int|string|null $color
      * @return void
      */
-    public function addHeader(string $title, int|string $color = null): void
+    public function addHeader(string $title, null|int|string $color = null): void
     {
         $this->helpers[] = ['', $title, 'type' => 'header', 'color' => $color];
     }
